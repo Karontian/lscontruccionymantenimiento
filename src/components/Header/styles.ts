@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { MenuOutlined } from "@ant-design/icons";
 
 export const HeaderSection = styled("header")`
+  background-color: #c9c7c2;
   padding: 1rem 0.5rem;
 
   .ant-row-space-between {
@@ -63,6 +64,7 @@ export const CustomNavLinkSmall = styled(NavLink)`
   transition: color 0.2s ease-in;
   margin: 0.5rem 2rem;
 
+
   @media only screen and (max-width: 768px) {
     margin: 1.25rem 2rem;
   }
@@ -88,8 +90,20 @@ export const Span = styled("span")`
   &:hover,
   &:active,
   &:focus {
-    color: rgb(255, 130, 92);
+    color: blue;
     text-underline-position: under;
-    text-decoration: rgb(255, 130, 92) wavy underline;
+    text-decoration:  underline red
+  }
+
+  button {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: blue; /* Change background color to red on hover */
+      color: white; /* Optional: Change text color to white on hover */
+      text-decoration: underline
+    }
   }
 `;
