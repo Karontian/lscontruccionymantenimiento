@@ -1,16 +1,16 @@
 {
-  "title": "Light, fast & responsive",
-  "text": "This template is ready to use, so you don't need to change anything at a component level, unless you want to customize the default styling.",
+  "title": "Proyectos recientes",
+  "text": "Algunos de nuestros trabajos recien completos, puede encontrar mas fotos en nuestras redes sociales, has click en la imagen!!.",
   "section": [
     {
-      "title": "Why Antd?",
-      "content": "Ant Design is a React UI library that has a lot of easy-to-use components for building elegant UI.",
-      "icon": "notes.svg"
+      "title": "Gallineros",
+      "content": "Terminados el 11/25/2024, Proyecto para gallina ponedora organica, capacidad 50 animales, acceso a area de pastoreo.",
+      "icon": "gallinero1.jpeg"
     },
     {
-      "title": "Why styled-components?",
+      "title": "Apartamentos",
       "content": "Styled Components gives you total control over your components.",
-      "icon": "notes.svg"
+      "icon": "gallinero2.jpeg"
     }
   ]
 }
