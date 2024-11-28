@@ -1,13 +1,10 @@
 {
   "title": "Construccion y reparacion del hogar",
-  "text": "también creamos lazos de confianza con cada uno de nuestros clientes. Somos un equipo pequeño y unido, que trabaja con dedicación y profesionalismo.",
+  "text": "Sea que necesites construir un espacio nuevo, reparar instalaciones existentes o mantener en óptimas condiciones tu hogar, estamos aquí para ayudarte con un enfoque profesional y personalizado. ¡Tu comodidad y tranquilidad son nuestra prioridad!",
   "button": [
     {
-      "title": "Ver Proyectos"
-    },
-    {
-      "title": "Learn more",
-      "color": "#fff"
+      "title": "Proyectos Recientes"
     }
+    
   ]
 }
