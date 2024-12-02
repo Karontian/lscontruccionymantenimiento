@@ -7,6 +7,8 @@ export interface ContentBlockProps {
     title: string;
     content: string;
     icon: string;
+    gallery: string[];
+
   }[];
   button?: (
     | {

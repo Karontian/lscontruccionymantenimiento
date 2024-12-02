@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Row, Col } from "antd";
 import { Fade } from "react-awesome-reveal";
 import { withTranslation } from "react-i18next";
@@ -14,6 +15,8 @@ import {
   MinPara,
   StyledRow,
   ButtonWrapper,
+  GalleryImages, // Import the new styled component
+  ArrowButton, // Import the new styled component for arrows
 } from "./styles";
 
 const ContentBlock = ({
@@ -31,6 +34,35 @@ const ContentBlock = ({
     element.scrollIntoView({
       behavior: "smooth",
     });
+  };
+
+  // State to keep track of the current image index for each section
+  const [currentImageIndexes, setCurrentImageIndexes] = useState<number[]>(
+    section ? section.map(() => 0) : []
+  );
+
+  const handlePrevClick = (index: number) => {
+    setCurrentImageIndexes((prevIndexes) =>
+      prevIndexes.map((currentIndex, i) =>
+        i === index
+          ? currentIndex === 0
+            ? section![i].gallery.length - 1
+            : currentIndex - 1
+          : currentIndex
+      )
+    );
+  };
+
+  const handleNextClick = (index: number) => {
+    setCurrentImageIndexes((prevIndexes) =>
+      prevIndexes.map((currentIndex, i) =>
+        i === index
+          ? currentIndex === section![i].gallery.length - 1
+            ? 0
+            : currentIndex + 1
+          : currentIndex
+      )
+    );
   };
 
   return (
@@ -82,18 +114,30 @@ const ContentBlock = ({
                             title: string;
                             content: string;
                             icon: string;
+                            gallery: string[];
                           },
-                          id: number
+                          index: number
                         ) => {
                           return (
-                            <Col key={id} span={11}>
-                              <SvgIcon
-                                src={item.icon}
-                                width="60px"
-                                height="60px"
-                              />
+                            <Col key={index} span={11}>
                               <MinTitle>{t(item.title)}</MinTitle>
                               <MinPara>{t(item.content)}</MinPara>
+                              <GalleryImages>
+                                {item.gallery.length > 0 && (
+                                  <>
+                                    <img
+                                      src={item.gallery[currentImageIndexes[index]]}
+                                      alt={item.title}
+                                    />
+                                    <ArrowButton onClick={() => handlePrevClick(index)}>
+                                      {"<"}
+                                    </ArrowButton>
+                                    <ArrowButton onClick={() => handleNextClick(index)}>
+                                      {">"}
+                                    </ArrowButton>
+                                  </>
+                                )}
+                              </GalleryImages>
                             </Col>
                           );
                         }

@@ -60,3 +60,43 @@ export const ButtonWrapper = styled("div")`
     margin-left: 20px;
   }
 `;
+
+// Add styles for the gallery
+export const GalleryImages = styled("div")`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+
+  img {
+    margin: 5px;
+    width: 200px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover;
+  }
+`;
+
+export const ArrowButton = styled("button")`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 1;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  &:first-of-type {
+    left: 0;
+  }
+
+  &:last-of-type {
+    right: 0;
+  }
+`;

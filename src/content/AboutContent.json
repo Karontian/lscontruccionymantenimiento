@@ -5,12 +5,14 @@
     {
       "title": "Gallineros",
       "content": "Terminados el 11/25/2024, Proyecto para gallina ponedora organica, capacidad 50 animales, acceso a area de pastoreo.",
-      "icon": "gallinero1.jpeg"
+      "icon": "gallinero1.jpeg",
+      "gallery": ["/img/svg/galli1.jpeg", "/img/svg/galli2.jpeg", "/img/svg/galli3.jpeg", "/img/svg/galli4.jpeg"]
     },
     {
       "title": "Apartamentos",
       "content": "Styled Components gives you total control over your components.",
-      "icon": "gallinero2.jpeg"
+      "icon": "gallinero2.jpeg",
+      "gallery": []
     }
   ]
 }
