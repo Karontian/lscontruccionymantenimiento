@@ -24,6 +24,7 @@ const ContentBlock = ({
   title,
   content,
   section,
+  gallery,
   button,
   t,
   id,
@@ -36,10 +37,11 @@ const ContentBlock = ({
     });
   };
 
-  // State to keep track of the current image index for each section
+  // State to keep track of the current image index for each section and gallery
   const [currentImageIndexes, setCurrentImageIndexes] = useState<number[]>(
     section ? section.map(() => 0) : []
   );
+  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
 
   const handlePrevClick = (index: number) => {
     setCurrentImageIndexes((prevIndexes) =>
@@ -62,6 +64,18 @@ const ContentBlock = ({
             : currentIndex + 1
           : currentIndex
       )
+    );
+  };
+
+  const handleGalleryPrevClick = () => {
+    setCurrentGalleryIndex((prevIndex) =>
+      prevIndex === 0 ? gallery!.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleGalleryNextClick = () => {
+    setCurrentGalleryIndex((prevIndex) =>
+      prevIndex === gallery!.length - 1 ? 0 : prevIndex + 1
     );
   };
 
@@ -105,45 +119,54 @@ const ContentBlock = ({
                     )}
                 </ButtonWrapper>
               ) : (
-                <ServiceWrapper>
-                  <Row justify="space-between">
-                    {typeof section === "object" &&
-                      section.map(
-                        (
-                          item: {
-                            title: string;
-                            content: string;
-                            icon: string;
-                            gallery: string[];
-                          },
-                          index: number
-                        ) => {
-                          return (
-                            <Col key={index} span={11}>
-                              <MinTitle>{t(item.title)}</MinTitle>
-                              <MinPara>{t(item.content)}</MinPara>
-                              <GalleryImages>
-                                {item.gallery.length > 0 && (
-                                  <>
-                                    <img
-                                      src={item.gallery[currentImageIndexes[index]]}
-                                      alt={item.title}
-                                    />
-                                    <ArrowButton onClick={() => handlePrevClick(index)}>
-                                      {"<"}
-                                    </ArrowButton>
-                                    <ArrowButton onClick={() => handleNextClick(index)}>
-                                      {">"}
-                                    </ArrowButton>
-                                  </>
-                                )}
-                              </GalleryImages>
-                            </Col>
-                          );
-                        }
-                      )}
-                  </Row>
-                </ServiceWrapper>
+                <>
+                  {gallery && gallery.length > 0 && (
+                    <GalleryImages>
+                      <img src={gallery[currentGalleryIndex]} alt={title} />
+                      <ArrowButton onClick={handleGalleryPrevClick}>{"<"}</ArrowButton>
+                      <ArrowButton onClick={handleGalleryNextClick}>{">"}</ArrowButton>
+                    </GalleryImages>
+                  )}
+                  <ServiceWrapper>
+                    <Row justify="space-between">
+                      {typeof section === "object" &&
+                        section.map(
+                          (
+                            item: {
+                              title: string;
+                              content: string;
+                              icon: string;
+                              gallery: string[];
+                            },
+                            index: number
+                          ) => {
+                            return (
+                              <Col key={index} span={11}>
+                                <MinTitle>{t(item.title)}</MinTitle>
+                                <MinPara>{t(item.content)}</MinPara>
+                                <GalleryImages>
+                                  {item.gallery.length > 0 && (
+                                    <>
+                                      <img
+                                        src={item.gallery[currentImageIndexes[index]]}
+                                        alt={item.title}
+                                      />
+                                      <ArrowButton onClick={() => handlePrevClick(index)}>
+                                        {"<"}
+                                      </ArrowButton>
+                                      <ArrowButton onClick={() => handleNextClick(index)}>
+                                        {">"}
+                                      </ArrowButton>
+                                    </>
+                                  )}
+                                </GalleryImages>
+                              </Col>
+                            );
+                          }
+                        )}
+                    </Row>
+                  </ServiceWrapper>
+                </>
               )}
             </ContentWrapper>
           </Col>

@@ -48,6 +48,7 @@ const Home = () => {
         direction="left"
         title={ProductContent.title}
         content={ProductContent.text}
+        gallery={ProductContent.gallery}
         icon="houseGardening.webp"
         id="product"
       />

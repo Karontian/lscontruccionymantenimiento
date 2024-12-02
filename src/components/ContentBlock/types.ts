@@ -10,6 +10,7 @@ export interface ContentBlockProps {
     gallery: string[];
 
   }[];
+  gallery?: string[];
   button?: (
     | {
         title: string;

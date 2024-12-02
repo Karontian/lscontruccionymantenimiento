@@ -10,9 +10,9 @@
     },
     {
       "title": "Apartamentos",
-      "content": "Styled Components gives you total control over your components.",
+      "content": "Nuevos departamentos terminados el 11/25. con piso, techo, instalacion electrica y obra gris, nos tomo 10 dias levantarlo",
       "icon": "gallinero2.jpeg",
-      "gallery": []
+      "gallery": ["/img/svg/galli5.jpeg", "/img/svg/galli6.jpeg", "/img/svg/galli7.jpeg", "/img/svg/galli8.jpeg"]
     }
   ]
 }
