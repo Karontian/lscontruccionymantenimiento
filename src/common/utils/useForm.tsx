@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { notification } from "antd";
+import emailjs from 'emailjs-com';
 
 interface IValues {
   name: string;
@@ -28,42 +29,29 @@ export const useForm = (validate: { (values: IValues): IValues }) => {
     const errors = validate(values);
     setFormState((prevState) => ({ ...prevState, errors }));
 
-    const url = ""; // Fill in your API URL here
+    if (Object.keys(errors).length > 0) {
+      alert('Completa todos los espacios correctamente xfavor...!');
+      return;
+    }
+
+    const templateParams = {
+      name: values.name,
+      email: values.email,
+      message: values.message,
+    };
 
     try {
-      if (Object.values(errors).every((error) => error === "")) {
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        });
-
-        if (!response.ok) {
-          notification["error"]({
-            message: "Error",
-            description:
-              "There was an error sending your message, please try again later.",
-          });
-        } else {
-          event.target.reset();
-          setFormState(() => ({
-            values: { ...initialValues },
-            errors: { ...initialValues },
-          }));
-
-          notification["success"]({
-            message: "Success",
-            description: "Your message has been sent!",
-          });
-        }
-      }
+      const result = await emailjs.send('service_j1yjtet', 'template_8gtypda', templateParams, 'FNEMWOmtFe_W-6BOh');
+      console.log(result.text);
+      alert('Gracias por tu mensage, en unos mins hablamos.!');
+      event.target.reset();
+      setFormState(() => ({
+        values: { ...initialValues },
+        errors: { ...initialValues },
+      }));
     } catch (error) {
-      notification["error"]({
-        message: "Error",
-        description: "Failed to submit form. Please try again later.",
-      });
+      console.log(error);
+      alert('Failed to send message, please try again.');
     }
   };
 
@@ -85,9 +73,17 @@ export const useForm = (validate: { (values: IValues): IValues }) => {
     }));
   };
 
+  const resetForm = () => {
+    setFormState({
+      values: { ...initialValues },
+      errors: { ...initialValues },
+    });
+  };
+
   return {
     handleChange,
     handleSubmit,
+    resetForm,
     values: formState.values,
     errors: formState.errors,
   };

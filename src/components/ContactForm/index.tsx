@@ -9,14 +9,45 @@ import Block from "../Block";
 import Input from "../../common/Input";
 import TextArea from "../../common/TextArea";
 import { ContactContainer, FormGroup, Span, ButtonContainer } from "./styles";
+import emailjs from 'emailjs-com';
+
 
 const Contact = ({ title, content, id, t }: ContactProps) => {
-  const { values, errors, handleChange, handleSubmit } = useForm(validate);
+  const { values, errors, handleChange, handleSubmit, resetForm } = useForm(validate);
 
   const ValidationType = ({ type }: ValidationTypeProps) => {
     const ErrorMessage = errors[type as keyof typeof errors];
     return <Span>{ErrorMessage}</Span>;
   };
+
+
+  const alternateSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    e.preventDefault();
+
+    const validationErrors = validate(values);
+    if (Object.keys(validationErrors).length > 0) {
+      alert('Completa todos los espacios correctamente xfavor...!');
+      return;
+    }
+
+    const templateParams = {
+      name: values.name,
+      email: values.email,
+      message: values.message,
+    };
+
+    try {
+      const result = await emailjs.send('service_j1yjtet', 'template_8gtypda', templateParams, 'FNEMWOmtFe_W-6BOh');
+      console.log(result.text);
+      alert('Message sent successfully!, pls allow the team 30min to respond');
+    } catch (error) {
+      console.log(error);
+      alert('Failed to send message, please try again.');
+    }
+
+  };
+
+
 
   return (
     <ContactContainer id={id}>
@@ -33,7 +64,7 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
                 <Input
                   type="text"
                   name="name"
-                  placeholder="Your Name"
+                  placeholder="Tu Nombre"
                   value={values.name || ""}
                   onChange={handleChange}
                 />
@@ -43,7 +74,7 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
                 <Input
                   type="text"
                   name="email"
-                  placeholder="Your Email"
+                  placeholder="Tu Email"
                   value={values.email || ""}
                   onChange={handleChange}
                 />
@@ -51,7 +82,7 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
               </Col>
               <Col span={24}>
                 <TextArea
-                  placeholder="Your Message"
+                  placeholder="Mensage o # de contacto, te contactamos en 15mins o menos, gracias"
                   value={values.message || ""}
                   name="message"
                   onChange={handleChange}

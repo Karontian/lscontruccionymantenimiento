@@ -1,18 +1,18 @@
 {
   "title": "Proyectos recientes",
-  "text": "Algunos de nuestros trabajos recien completos, puede encontrar mas fotos en nuestras redes sociales, has click en la imagen!!.",
+  "text": "Hemos construido de todo; casas, apartamentos, construcciones de producción, sistemas de riego, alcantarillado y séptico, Algunos trabajos finalizados este año...",
   "section": [
     {
-      "title": "Gallineros",
-      "content": "Terminados el 11/25/2024, Proyecto para gallina ponedora organica, capacidad 50 animales, acceso a area de pastoreo.",
+      "title": "Construccion de estructuras para el agro",
+      "content": "Construcción agropecuaria para servir en la producción rural de huevo orgánico y de pastoreo.",
       "icon": "gallinero1.jpeg",
-      "gallery": ["/img/svg/galli1.jpeg", "/img/svg/galli2.jpeg", "/img/svg/galli3.jpeg", "/img/svg/galli4.jpeg"]
+      "gallery": ["/img/svg/galli8.jpeg","/img/svg/gallinero2.jpeg", "/img/svg/galli6.jpeg", "/img/svg/galli1.jpeg", "/img/svg/galli4.jpeg"]
     },
     {
-      "title": "Apartamentos",
-      "content": "Nuevos departamentos terminados el 11/25. con piso, techo, instalacion electrica y obra gris, nos tomo 10 dias levantarlo",
+      "title": "Reparacion, mantenimiento del hogar y mas...",
+      "content": "Obra gris, fontanería, mantenimiento eléctrico, instalación de dispositivos, reconstrucción y remodelación",
       "icon": "gallinero2.jpeg",
-      "gallery": ["/img/svg/galli5.jpeg", "/img/svg/galli6.jpeg", "/img/svg/galli7.jpeg", "/img/svg/galli8.jpeg"]
+      "gallery": ["/img/svg/puerta1.jpeg","/img/svg/fontaneria1.jpg","/img/svg/instalacionCamara.jpeg","/img/svg/muro2.webp", "/img/svg/InstalacionCamara2.jpeg","/img/svg/terraza1.jpeg","/img/svg/terraza2.jpeg","/img/svg/muro1.jpg"]
     }
   ]
 }

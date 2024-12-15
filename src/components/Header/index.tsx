@@ -40,7 +40,7 @@ const Header = ({ t }: { t: TFunction }) => {
           <Span>{t("Mantenimiento ")}</Span>
         </CustomNavLinkSmall>
         <CustomNavLinkSmall onClick={() => scrollTo("product")}>
-          <Span>{t("Jardineria")}</Span>
+          <Span>{t("Jardinería")}</Span>
         </CustomNavLinkSmall>
         <CustomNavLinkSmall
         style={{ width: "180px"}}
